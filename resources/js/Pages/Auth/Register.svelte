@@ -1,26 +1,26 @@
 <script lang="ts">
-    import GuestLayout from '@/Layouts/GuestLayout.svelte';
-    import InputError from '@/Components/InputError.svelte';
-    import InputLabel from '@/Components/InputLabel.svelte';
-    import PrimaryButton from '@/Components/PrimaryButton.svelte';
-    import TextInput from '@/Components/TextInput.svelte';
-    import { inertia, useForm } from '@inertiajs/svelte';
-    import { route } from 'momentum-trail';
+    import GuestLayout from '@/Layouts/GuestLayout.svelte'
+    import InputError from '@/Components/InputError.svelte'
+    import InputLabel from '@/Components/InputLabel.svelte'
+    import PrimaryButton from '@/Components/PrimaryButton.svelte'
+    import TextInput from '@/Components/TextInput.svelte'
+    import { inertia, useForm } from '@inertiajs/svelte'
+    import { route } from 'momentum-trail'
 
     const form = useForm({
         name: '',
         email: '',
         password: '',
         password_confirmation: '',
-    });
+    })
 
     function submit(e: SubmitEvent) {
-        e.preventDefault();
+        e.preventDefault()
 
         $form.post(route('register'), {
             onFinish: () => $form.reset('password', 'password_confirmation'),
-        });
-    };
+        })
+    }
 </script>
 
 <svelte:head>
@@ -90,11 +90,11 @@
             <InputError class="mt-2" message={$form.errors.password_confirmation} />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="mt-4 flex items-center justify-end">
             <a
                 use:inertia
                 href={route('login')}
-                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
             >
                 Already registered?
             </a>

@@ -1,0 +1,7 @@
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+composer.lock
+public/build
+vendor
+**/*.md

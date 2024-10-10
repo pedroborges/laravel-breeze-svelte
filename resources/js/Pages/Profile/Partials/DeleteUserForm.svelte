@@ -1,28 +1,28 @@
 <script lang="ts">
-    import { useForm } from '@inertiajs/svelte';
-    import DangerButton from '@/Components/DangerButton.svelte';
-    import InputError from '@/Components/InputError.svelte';
-    import InputLabel from '@/Components/InputLabel.svelte';
-    import Modal from '@/Components/Modal.svelte';
-    import SecondaryButton from '@/Components/SecondaryButton.svelte';
-    import TextInput from '@/Components/TextInput.svelte';
-    import { route } from 'momentum-trail';
+    import { useForm } from '@inertiajs/svelte'
+    import DangerButton from '@/Components/DangerButton.svelte'
+    import InputError from '@/Components/InputError.svelte'
+    import InputLabel from '@/Components/InputLabel.svelte'
+    import Modal from '@/Components/Modal.svelte'
+    import SecondaryButton from '@/Components/SecondaryButton.svelte'
+    import TextInput from '@/Components/TextInput.svelte'
+    import { route } from 'momentum-trail'
 
-    let confirmingUserDeletion = $state(false);
-    let passwordInput: TextInput;
+    let confirmingUserDeletion = $state(false)
+    let passwordInput: TextInput
 
     const form = useForm({
         password: '',
-    });
+    })
 
     function closeModal() {
-        confirmingUserDeletion = false;
-        $form.reset();
+        confirmingUserDeletion = false
+        $form.reset()
     }
 
     function confirmUserDeletion() {
-        confirmingUserDeletion = true;
-        setTimeout(() => passwordInput?.focus(), 250);
+        confirmingUserDeletion = true
+        setTimeout(() => passwordInput?.focus(), 250)
     }
 
     function deleteUser() {
@@ -31,7 +31,7 @@
             onSuccess: () => closeModal(),
             onError: () => passwordInput?.focus(),
             onFinish: () => $form.reset(),
-        });
+        })
     }
 </script>
 
@@ -54,8 +54,8 @@
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                enter your password to confirm you would like to permanently delete your account.
+                Once your account is deleted, all of its resources and data will be permanently deleted. Please enter
+                your password to confirm you would like to permanently delete your account.
             </p>
 
             <div class="mt-6">

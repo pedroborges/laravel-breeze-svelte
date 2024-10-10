@@ -1,9 +1,12 @@
 <script lang="ts">
-    import type { HTMLAttributes } from 'svelte/elements';
+    import type { HTMLAttributes } from 'svelte/elements'
 
-    let { message, ...attrs }: HTMLAttributes<HTMLDivElement> & {
+    let {
+        message,
+        ...attrs
+    }: HTMLAttributes<HTMLDivElement> & {
         message?: string
-    } = $props();
+    } = $props()
 </script>
 
 {#if message}

@@ -1,23 +1,23 @@
 <script lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.svelte';
-import InputError from '@/Components/InputError.svelte';
-import InputLabel from '@/Components/InputLabel.svelte';
-import PrimaryButton from '@/Components/PrimaryButton.svelte';
-import TextInput from '@/Components/TextInput.svelte';
-import { route } from 'momentum-trail';
-import { useForm } from '@inertiajs/svelte';
+    import GuestLayout from '@/Layouts/GuestLayout.svelte'
+    import InputError from '@/Components/InputError.svelte'
+    import InputLabel from '@/Components/InputLabel.svelte'
+    import PrimaryButton from '@/Components/PrimaryButton.svelte'
+    import TextInput from '@/Components/TextInput.svelte'
+    import { route } from 'momentum-trail'
+    import { useForm } from '@inertiajs/svelte'
 
-const form = useForm({
-    password: '',
-});
+    const form = useForm({
+        password: '',
+    })
 
-function submit(e: SubmitEvent) {
-    e.preventDefault();
+    function submit(e: SubmitEvent) {
+        e.preventDefault()
 
-    $form.post(route('password.confirm'), {
-        onFinish: () => $form.reset(),
-    });
-};
+        $form.post(route('password.confirm'), {
+            onFinish: () => $form.reset(),
+        })
+    }
 </script>
 
 <svelte:head>
@@ -44,10 +44,10 @@ function submit(e: SubmitEvent) {
             <InputError class="mt-2" message={$form.errors.password} />
         </div>
 
-        <div class="flex justify-end mt-4">
-            <PrimaryButton class="ms-4 {$form.processing && 'opacity-25'}" disabled={$form.processing}>
-                Confirm
-            </PrimaryButton>
+        <div class="mt-4 flex justify-end">
+            <PrimaryButton class="ms-4 {$form.processing && 'opacity-25'}" disabled={$form.processing}
+                >Confirm</PrimaryButton
+            >
         </div>
     </form>
 </GuestLayout>

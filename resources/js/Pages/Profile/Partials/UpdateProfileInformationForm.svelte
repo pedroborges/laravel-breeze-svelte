@@ -1,26 +1,29 @@
 <script lang="ts">
-    import { inertia, page, useForm } from '@inertiajs/svelte';
-    import InputError from '@/Components/InputError.svelte';
-    import InputLabel from '@/Components/InputLabel.svelte';
-    import PrimaryButton from '@/Components/PrimaryButton.svelte';
-    import TextInput from '@/Components/TextInput.svelte';
-    import Transition from 'svelte-transition';
-    import { route } from 'momentum-trail';
+    import { inertia, page, useForm } from '@inertiajs/svelte'
+    import InputError from '@/Components/InputError.svelte'
+    import InputLabel from '@/Components/InputLabel.svelte'
+    import PrimaryButton from '@/Components/PrimaryButton.svelte'
+    import TextInput from '@/Components/TextInput.svelte'
+    import Transition from 'svelte-transition'
+    import { route } from 'momentum-trail'
 
-    let { mustVerifyEmail, status }: {
-        mustVerifyEmail?: boolean;
-        status?: string;
-    } = $props();
+    let {
+        mustVerifyEmail,
+        status,
+    }: {
+        mustVerifyEmail?: boolean
+        status?: string
+    } = $props()
 
-    const user = $page.props.auth.user;
+    const user = $page.props.auth.user
     const form = useForm({
         name: user.name,
         email: user.email,
-    });
+    })
 
     function submit(e: SubmitEvent) {
-        e.preventDefault();
-        $form.patch(route('profile.update'));
+        e.preventDefault()
+        $form.patch(route('profile.update'))
     }
 </script>
 
@@ -66,18 +69,18 @@
         </div>
 
         {#if mustVerifyEmail && user.email_verified_at === null}
-            <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
+            <p class="mt-2 text-sm text-gray-800 dark:text-gray-200">
                 Your email address is unverified.
                 <button
                     use:inertia={{ href: route('verification.send'), method: 'post' }}
-                    class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 >
                     Click here to re-send the verification email.
                 </button>
             </p>
 
             {#if status === 'verification-link-sent'}
-                <div class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                <div class="mt-2 text-sm font-medium text-green-600 dark:text-green-400">
                     A new verification link has been sent to your email address.
                 </div>
             {/if}
@@ -93,7 +96,7 @@
                 leave="transition ease-in-out"
                 leaveFrom="opacity-0"
             >
-                <p class="text-sm text-gray-600 dark:text-gray-400 transition ease-in-out">Saved.</p>
+                <p class="text-sm text-gray-600 transition ease-in-out dark:text-gray-400">Saved.</p>
             </Transition>
         </div>
     </form>

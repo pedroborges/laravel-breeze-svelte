@@ -1,13 +1,16 @@
 <script lang="ts">
-    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte';
-    import DeleteUserForm from './Partials/DeleteUserForm.svelte';
-    import UpdatePasswordForm from './Partials/UpdatePasswordForm.svelte';
-    import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.svelte';
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte'
+    import DeleteUserForm from './Partials/DeleteUserForm.svelte'
+    import UpdatePasswordForm from './Partials/UpdatePasswordForm.svelte'
+    import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.svelte'
 
-    let { mustVerifyEmail, status }: {
-        mustVerifyEmail?: boolean;
-        status?: string;
-    } = $props();
+    let {
+        mustVerifyEmail,
+        status,
+    }: {
+        mustVerifyEmail?: boolean
+        status?: string
+    } = $props()
 </script>
 
 <svelte:head>
@@ -16,20 +19,20 @@
 
 <AuthenticatedLayout>
     {#snippet header()}
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Profile</h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">Profile</h2>
     {/snippet}
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+        <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+            <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
                 <UpdateProfileInformationForm {mustVerifyEmail} {status} class="max-w-xl" />
             </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
                 <UpdatePasswordForm class="max-w-xl" />
             </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800">
                 <DeleteUserForm class="max-w-xl" />
             </div>
         </div>
