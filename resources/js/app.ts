@@ -5,6 +5,10 @@ import { hydrate, mount } from 'svelte'
 import { createInertiaApp} from '@inertiajs/svelte'
 import type { ResolvedComponent } from '@inertiajs/svelte'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import { defineRoutes } from 'momentum-trail'
+import routes from './routes.json'
+
+defineRoutes(routes)
 
 createInertiaApp({
     resolve: (name) => resolvePageComponent(

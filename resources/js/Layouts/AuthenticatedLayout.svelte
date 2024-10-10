@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Snippet } from 'svelte';
     import { inertia, page } from '@inertiajs/svelte';
+    import { route } from 'momentum-trail';
     import ApplicationLogo from '@/Components/ApplicationLogo.svelte';
     import Dropdown from '@/Components/Dropdown.svelte';
     import DropdownLink from '@/Components/DropdownLink.svelte';

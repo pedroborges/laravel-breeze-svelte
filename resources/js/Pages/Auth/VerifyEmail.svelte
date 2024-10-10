@@ -2,6 +2,7 @@
     import { inertia, useForm } from '@inertiajs/svelte';
     import GuestLayout from '@/Layouts/GuestLayout.svelte';
     import PrimaryButton from '@/Components/PrimaryButton.svelte';
+    import { route } from 'momentum-trail';
 
     let { status }: { status?: string } = $props();
 

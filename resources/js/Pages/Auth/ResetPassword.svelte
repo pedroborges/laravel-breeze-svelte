@@ -4,6 +4,7 @@
     import InputLabel from '@/Components/InputLabel.svelte';
     import PrimaryButton from '@/Components/PrimaryButton.svelte';
     import TextInput from '@/Components/TextInput.svelte';
+    import { route } from 'momentum-trail';
     import { useForm } from '@inertiajs/svelte';
 
     let { email, token }: { email: string; token: string } = $props();

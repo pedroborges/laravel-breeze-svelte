@@ -4,6 +4,8 @@
 /public/build
 /public/hot
 /public/storage
+/resources/js/types/routes.d.ts
+/resources/js/routes.json
 /storage/*.key
 /vendor
 .env

@@ -6,6 +6,7 @@
     import PrimaryButton from '@/Components/PrimaryButton.svelte';
     import TextInput from '@/Components/TextInput.svelte';
     import { inertia, useForm } from '@inertiajs/svelte';
+    import { route } from 'momentum-trail';
 
     let { canResetPassword, status }: {
         canResetPassword?: boolean;
