@@ -9,8 +9,6 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
-        svelte({
-            prebundleSvelteLibraries: true,
-        }),
+        svelte(),
     ],
 });

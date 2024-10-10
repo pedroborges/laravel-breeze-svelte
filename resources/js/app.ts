@@ -1,20 +1,21 @@
 import './bootstrap';
 import '../css/app.css';
 
-import type { SvelteComponent } from 'svelte';
-import { mount } from 'svelte'
-import { createInertiaApp } from '@inertiajs/svelte'
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+import { hydrate, mount } from 'svelte'
+import { createInertiaApp} from '@inertiajs/svelte'
+import type { ResolvedComponent } from '@inertiajs/svelte'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.svelte`, import.meta.glob<SvelteComponent>('./Pages/**/*.svelte')),
-    setup({ el, App, props }) {
-        return mount(App, { target: el}, props)
-    },
-    progress: {
-        color: '#F00',
+    resolve: (name) => resolvePageComponent(
+        `./Pages/${name}.svelte`,
+        import.meta.glob<ResolvedComponent>('./Pages/**/*.svelte')
+    ),
+    setup({ el, App }) {
+        if (el.dataset.serverRendered === 'true') {
+            hydrate(App, { target: el })
+          } else {
+            mount(App, { target: el })
+          }
     },
 });
